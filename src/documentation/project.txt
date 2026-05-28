@@ -1,0 +1,53 @@
+So this project is based employee management sysytem In which --
+1.A employer gives a task to their employee
+2.employee accept that task 
+
+Storage - we use is local storgae
+
+
+#1 Project Setup - 
+1.Create the prject in terminal using vite
+Vite - a bundle whicih is used create folder of react
+
+2.After opening folder - we delete all app.jsx or index.css file 
+& we used - Tailwind css in this project 
+
+3.Now in src we create a folder which name is context 
+Context - it is a state management tool to provide nd make the data flow good by using data centeralization method
+
+4.Also we create a Compoenet  & pages  folder - 
+
+5. So in context we have 2 file - 
+1st is auth context - jiske andr hm authorization  accees krnee
+2nd is task - jisme task manage hoenge
+
+6.Also we Create utils folder - in which we create localstorage file
+
+7.So now in component we create some folders like Auth,Dashboard
+Auth - in which we manage auth of our system like login,logout
+Dashboard- in which we make a file Employee Dashboard & Admin Dashboard
+TaskList - in which we manage task function like accept , complete ,failed or new task
+
+So now we go to App.jsx where we link login page there 
+
+so now we edit our login page according to its need like data in input like mail,password button validation on form submition or in button we do two way binding
+
+for button click like if we submit the form then we use two way binding like form k click hone p ky ho rha hai so for that we use two way binding by using useState like for email or password 
+
+
+2.SO now we create admin & employee Dashbaord 
+
+so frst for employee dashbaord - we divide our ui into components in other folder like header , cards & so we use components to build employee dashboard 
+similarly we build admin dashboard - using components so our code looks good or well structured
+
+3.Now we make context for auth & task
+so in auth - we have the data of a user 
+or in taskk - we have data of task related to that user 
+so in main.jsx we wrapped our app with both auth & task context
+
+4.Now we have tp save our dta in local storage so for that we use localstorage filter and select the data that we are getting 
+
+5.After that we do setting up of employess and admin data differently so we add chck on option in it so the app chck who is login user or admin 
+by using context method 
+6.Then we filter admin or employees login from the goiven list if the email & password match the list then the user login else invalid credential so we use find method in it 
+7.after that we have to chck who is logged in user or admin...so for that //setting up who is logged in user or admin
