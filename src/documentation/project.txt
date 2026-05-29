@@ -51,3 +51,8 @@ so in main.jsx we wrapped our app with both auth & task context
 by using context method 
 6.Then we filter admin or employees login from the goiven list if the email & password match the list then the user login else invalid credential so we use find method in it 
 7.after that we have to chck who is logged in user or admin...so for that //setting up who is logged in user or admin
+
+
+8. Then we work on all task section in which in the admin we shows how many employee we have ans what task they assigned
+
+9.Then we work on create task like how we create task for a employee and other things

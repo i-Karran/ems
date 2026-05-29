@@ -1,16 +1,32 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { AuthContext } from "../../context/authProvider";
 
 const AllTask = () => {
+  const authData = useContext(AuthContext);
   return (
-    <div className='bg-[#1c1c1c] p-5 mt-5 rounded h-80'>
-        <div className='bg-red-400 py-2 px-4 flex justify-between rounded'>
-            <h2>Karan</h2>
-            <h3>Make a UI Design</h3>
-            <h5>Status</h5>
-        </div>
-
+    <div className="bg-[#1c1c1c] p-5 mt-5 rounded overflow-auto h-80">
+      <div className="bg-red-400 mb-2 py-2 px-4 flex justify-between rounded">
+        <h2 className="w-1/5 text-lg font-medium">Employee Name</h2>
+        <h3 className="w-1/5 text-lg font-medium">Active Task</h3>
+        <h5 className="w-1/5 text-lg font-medium">New Task</h5>
+        <h5 className="w-1/5 text-lg font-medium">Complete Task</h5>
+        <h5 className="w-1/5 text-lg font-medium">Failed Task</h5>
+      </div>
+      <div className="overflow-auto h-80%">
+        {authData.employees.map(function (elem) {
+        return (
+          <div className="border-2 mb-2 py-2 px-4 flex justify-between rounded">
+            <h2 className="w-1/5 text-lg font-medium">{elem.firstName}</h2>
+            <h3 className="w-1/5 text-lg font-medium">{elem.taskNumbers.active}</h3>
+            <h5 className="w-1/5 text-lg font-medium">{elem.taskNumbers.newTask}</h5>
+            <h5 className="w-1/5 text-lg font-medium">{elem.taskNumbers.completed}</h5>
+            <h5 className="w-1/5 text-lg font-medium">{elem.taskNumbers.failed}</h5>
+          </div>
+        );
+      })}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default AllTask
+export default AllTask;
