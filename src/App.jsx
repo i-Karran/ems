@@ -52,9 +52,9 @@ const App = () => {
         {/* To yhapr hmne likha if user nhi hai toh login screen p le jao nhi dashboard of employee or admin */}
         {!user ? <Login handleLogin={handleLogin} /> : ""}
         {user == "admin" ? (
-          <AdminDashboard />
+          <AdminDashboard changeUser={setUser}/>
         ) : user == "employee" ? (
-          <EmployeeDashboard data={loggedInUserData} />
+          <EmployeeDashboard changeUser={setUser}  data={loggedInUserData} />
         ) : null}
 
         {/* <EmployeeDashboard /> */}
