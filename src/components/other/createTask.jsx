@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../context/authProvider";
 
 const CreateTask = () => {
+  const [userData, setUserData] = useContext(AuthContext);
+
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
   const [taskDate, setTaskDate] = useState("");
   const [assignTo, setAssignTo] = useState("");
   const [category, setCategory] = useState("");
 
-  const [newTask, setNewTask] = useState({});   
+  const [newTask, setNewTask] = useState({});
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -22,28 +25,27 @@ const CreateTask = () => {
       completed: false,
       failed: false,
     });
-    const data = JSON.parse(localStorage.getItem('employees'))
-    data.forEach(function(elem){
+    const data = userData
+    data.forEach(function (elem) {
       if (assignTo == elem.firstName) {
-        elem.tasks.push(newTask)
-        console.log(elem)
+        elem.tasks.push(newTask);
+        elem.taskNumbers.newTask = elem.taskNumbers.newTask+1
       }
-    })
-    localStorage.setItem('employees',data)
+    });
+   setUserData(data)
+   console.log(data)
 
-    setTaskTitle('')
-    setCategory('')
-    setTaskDate('')
-    setAssignTo('')
-    setTaskDescription('')
-    
+    setTaskTitle("");
+    setCategory("");
+    setTaskDate("");
+    setAssignTo("");
+    setTaskDescription("");
   };
   return (
     <div className="p-5 bg-[#1c1c1c] mt-7 rounded">
       <form
         onSubmit={(e) => {
           submitHandler(e);
-         
         }}
         className="flex flex-wrap items-start justify-between w-full "
       >
@@ -107,7 +109,10 @@ const CreateTask = () => {
             name=""
             id=""
           ></textarea>
-          <button onSubmit={submitHandler} className="bg-emerald-500 py-3 hover:bg-emerald-600 px-5 rounded text-sm mt-4 w-full ">
+          <button
+            onSubmit={submitHandler}
+            className="bg-emerald-500 py-3 hover:bg-emerald-600 px-5 rounded text-sm mt-4 w-full "
+          >
             Create Task
           </button>
         </div>
